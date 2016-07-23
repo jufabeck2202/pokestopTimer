@@ -1,0 +1,15 @@
+<ion-navbar *navbar>
+  <ion-title>Home</ion-title>
+</ion-navbar>
+
+<ion-content padding class="home">
+  <button full dark (click)="onClick()"></button>
+  <ion-item>
+  <ion-label>Time to next notification</ion-label>
+  <ion-datetime displayFormat="mm" pickerFormat="mm"></ion-datetime>
+</ion-item>
+<ion-item>
+<ion-label>Start Time</ion-label>
+<ion-datetime displayFormat="mm" pickerFormat="mm"></ion-datetime>
+</ion-item>
+</ion-content>
