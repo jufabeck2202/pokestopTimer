@@ -3,13 +3,22 @@
 </ion-navbar>
 
 <ion-content padding class="home">
-  <button full dark (click)="onClick()"></button>
+  <ion-list-header>
+
+    Interval = {{minutes}}
+  </ion-list-header>
+
   <ion-item>
-  <ion-label>Time to next notification</ion-label>
-  <ion-datetime displayFormat="mm" pickerFormat="mm"></ion-datetime>
-</ion-item>
-<ion-item>
-<ion-label>Start Time</ion-label>
-<ion-datetime displayFormat="mm" pickerFormat="mm"></ion-datetime>
-</ion-item>
+    {{time}}
+  </ion-item>
+  <ion-item>
+
+    <ion-range min="0" max="20" default="5" [(ngModel)]="minutes" dark>
+      <ion-label range-left>0</ion-label>
+      <ion-label range-right>20</ion-label>
+    </ion-range>
+
+  </ion-item>
+  <button full dark (click)="onClick()">Start</button>
+
 </ion-content>
