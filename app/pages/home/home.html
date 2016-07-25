@@ -8,17 +8,17 @@
     Interval = {{minutes}}
   </ion-list-header>
 
-  <ion-item>
-    <h1>{{time}}</h1>
-  </ion-item>
-  <ion-item>
 
+    <h1 class="timer">{{time}}</h1>
+
+
+  <ion-item>
     <ion-range min="0" max="20" default="5" [(ngModel)]="minutes" dark>
       <ion-label range-left>0</ion-label>
       <ion-label range-right>20</ion-label>
     </ion-range>
 
   </ion-item>
-  <button full dark (click)="onClick()">Start</button>
+  <button full [style.backgroundColor]="!running ? '#00CC00' : '#FF0000'"(click)="onClick()">{{!running ? "Start":"reset"}}</button>
 
 </ion-content>
