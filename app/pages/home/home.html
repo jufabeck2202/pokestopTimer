@@ -1,24 +1,25 @@
 <ion-navbar *navbar>
-  <ion-title>Home</ion-title>
+  <ion-title>Pokestop Timer</ion-title>
+  <ion-buttons end>
+    <button (click)="openModal()">
+      <ion-icon name="information-circle"></ion-icon>
+    </button>
+  </ion-buttons>
 </ion-navbar>
 
 <ion-content padding class="home">
-  <ion-list-header>
 
-    Interval = {{minutes}}
-  </ion-list-header>
-
-
-    <h1 class="timer">{{time}}</h1>
+  <h1 class="timer">{{!switch ? minutes+":00":time}}</h1>
 
 
   <ion-item>
-    <ion-range min="0" max="20" default="5" [(ngModel)]="minutes" dark>
-      <ion-label range-left>0</ion-label>
+    <ion-range min="1" max="20" default="5" [(ngModel)]="minutes" dark [disabled]="running"  >
+      <ion-label range-left>1</ion-label>
       <ion-label range-right>20</ion-label>
     </ion-range>
 
   </ion-item>
-  <button full [style.backgroundColor]="!running ? '#00CC00' : '#FF0000'"(click)="onClick()">{{!running ? "Start":"reset"}}</button>
+  <ion-item class="middle"> Reminder every <b>{{minutes}}</b> minutes </ion-item>
+  <button  round full [style.backgroundColor]="!running ? '#00CC00' : '#FF0000'" (click)="onClick()">{{!running ? "Start":"reset"}}</button>
 
 </ion-content>

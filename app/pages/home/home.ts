@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {NavController, Platform} from 'ionic-angular';
+import {NavController, Platform, Modal, ViewController} from 'ionic-angular';
 import {LocalNotifications} from 'ionic-native';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
@@ -14,10 +14,11 @@ export class HomePage {
 
   public timer
   public minutes = 5
-  public time = "0:00"
+  public time
   public pauser = new Subject();
   public timerInterval
   private admobId: any;
+  private switch:Boolean = false;
 
 
   constructor(private navController: NavController, public platform: Platform) {
@@ -38,18 +39,22 @@ export class HomePage {
     })
 
   }
+  onChange(deviceValue) {
+    console.log(deviceValue);
+  }
 
 
   onClick() {
     if (!this.running) {
-      this.startTimer(this.minutes*60);
-      this.running = !this.running;
+      this.startTimer(this.minutes * 60);
+      this.running = !this.running
 
     } else {
 
       this.timerInterval.unsubscribe();
       this.running = !this.running;
-      this.time = "0:00"
+      this.switch = !this.switch
+
     }
   }
 
@@ -70,8 +75,9 @@ export class HomePage {
 
       minutes = minutes < 10 ? "0" + minutes : minutes;
       seconds = seconds < 10 ? "0" + seconds : seconds;
-      this.time = parseInt(minutes) + ":" + seconds;
 
+      this.time = parseInt(minutes) + ":" + seconds;
+      this.switch=true
       if (--timer < 0) {
         this.callNotificaton();
         timer = duration;
@@ -79,7 +85,40 @@ export class HomePage {
     });
   }
 
+  openModal() {
+    let modal = Modal.create(InfoModal);
+    this.navController.present(modal);
+  }
 
 
 
+
+}
+
+@Component({
+  template: `
+
+  <ion-content padding>
+  <ion-navbar *navbar>
+    <ion-title>Info </ion-title>
+    <ion-buttons start>
+      <button (click)="close()">
+        <ion-icon name="close-circle"></ion-icon>
+      </button>
+      </ion-buttons>
+      </ion-navbar>
+      <ion-item>
+
+      </ion-item>
+
+
+  </ion-content>`
+})
+class InfoModal {
+  constructor(
+    private viewCtrl: ViewController) { }
+
+  close() {
+    this.viewCtrl.dismiss();
+  }
 }
