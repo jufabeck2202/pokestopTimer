@@ -62,7 +62,9 @@ export class HomePage {
   callNotificaton() {
     LocalNotifications.schedule({
       text: "Pokemstop Ready",
-      sound: 'file://res/sound.mp3'
+      sound: 'file://res/sound.mp3',
+      icon: "file://res/icon.png",
+      smallIcon:"file://res/icon.png"
 
     })
   }
