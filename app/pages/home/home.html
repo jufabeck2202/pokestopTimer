@@ -1,4 +1,4 @@
-<ion-navbar *navbar>
+<ion-navbar *navbar style="background-color:#E88873">
   <ion-title>Pokestop Timer</ion-title>
   <ion-buttons end>
     <button (click)="openModal()">
@@ -13,13 +13,17 @@
 
 
   <ion-item>
-    <ion-range min="1" max="20" default="5" [(ngModel)]="minutes" dark [disabled]="running"  >
+    <ion-range min="1" max="20" default="5" [(ngModel)]="minutes" dark [disabled]="running">
       <ion-label range-left>1</ion-label>
       <ion-label range-right>20</ion-label>
     </ion-range>
 
   </ion-item>
   <ion-item class="middle"> Reminder every <b>{{minutes}}</b> minutes </ion-item>
-  <button  round full [style.backgroundColor]="!running ? '#00CC00' : '#FF0000'" (click)="onClick()">{{!running ? "Start":"Stop"}}</button>
+  <button round full [style.backgroundColor]="!running ? '#1EA896' : '#FF715B'" (click)="onClick()">{{!running ? "Start":"Stop"}}</button>
+  <ion-item text-wrap>
+  <p >  The Pokestop Timer helps you farm Pokestops. Just simply activate the Timer and it will remind you every X minutes to spin the Pokestop Cirlce. This way you don't have to look at your Phone constantly. The normal cooldown of a Pokestop is <b>5 min</b>. If you have enough Items just Reset the Timer</p>
+  </ion-item>
+
 
 </ion-content>
