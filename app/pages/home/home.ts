@@ -71,6 +71,7 @@ export class HomePage {
 
   startTimer(duration) {
     let timer = duration, minutes, seconds;
+    this.time = this.minutes+":00"
     this.timerInterval = Observable.interval(1000).subscribe(() => {
       minutes = timer / 60, 10;
       seconds = timer % 60, 10;
