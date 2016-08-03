@@ -31,7 +31,7 @@ export class HomePage {
     this.platform.ready().then(() => {
       if (AdMob) AdMob.createBanner({
         adId: "ca-app-pub-4155055675967377/9101443840",
-        isTesting: true,
+        isTesting: false,
         position: AdMob.AD_POSITION.BOTTOM_CENTER,
         autoShow: true, //this shows the ad
       })
