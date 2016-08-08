@@ -3,6 +3,7 @@ import {NavController, Platform, Modal, ViewController} from 'ionic-angular';
 import {LocalNotifications} from 'ionic-native';
 import {Observable} from 'rxjs/Observable';
 import {Subject} from 'rxjs/Subject';
+import { Vibration } from 'ionic-native';
 declare var AdMob: any
 
 @Component({
@@ -60,8 +61,9 @@ export class HomePage {
 
 
   callNotificaton() {
+    Vibration.vibrate([700,300,700]);
     LocalNotifications.schedule({
-      text: "Pokemstop Ready",
+      text: "Pokestop Ready",
       sound: 'file://res/sound.mp3',
       icon: "file://res/icon.png",
       smallIcon:"file://res/icon.png"
